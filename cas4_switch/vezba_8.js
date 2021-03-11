@@ -12,13 +12,14 @@ switch (sign) {
     case "-":
         console.log(num1 - num2);
         break;
-    case "/"&&num2!=0:
+    case "/":
+        if (num2 !=0)
         console.log(num1 / num2);
+        else {
+            console.log("Watch out for divison by zero!");
+        }
         break;
     case "*":
         console.log(num1 * num2);
         break;
-        default:
-            console.log("Watch out for divison by zero!");
-            break;
 }
