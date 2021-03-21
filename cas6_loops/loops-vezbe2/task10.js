@@ -13,9 +13,9 @@ for (var i = 0; i < a.length; i++) {
         console.log("Error!");
         break;
     } else if (p === i) {
-        b.push(e);
+        b[b.length] = e;
     }
-    b.push(a[i]);
+    b[b.length] = a[i];
 }
 
 a = b;

@@ -4,14 +4,14 @@ Output: yes
 Input: e = 3, a = [5, -4.2, 18, 7]
 Output: no */
 
-var a = [5,-4.2,18,7];
+var a = [5, -4.2, 18, 7];
 var e = 3;
-var count = "no";
+var res = "no";
 
 for (var i = 0; i < a.length; i++) {
     if (e === a[i]) {
-        count = "yes";
+        res = "yes";
     }
 }
 
-console.log(count);
+console.log(res);
