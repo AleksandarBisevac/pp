@@ -13,4 +13,4 @@ for (var i = 0; i < a.length; i++) {
     }
 }
 
-console.log(minElement+", " + count);
+console.log(minElement + ", " + count);

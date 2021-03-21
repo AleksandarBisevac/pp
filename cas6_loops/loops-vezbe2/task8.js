@@ -7,10 +7,12 @@ var b = [3, 8, 11, 9];
 var ab = [];
 
 for (var i = 0; i < a.length; i++) {
-    ab.push(a[i]);
+    // ab.push(a[i]);
+    ab[ab.length] = a[i];
 }
 for (var i = 0; i < b.length; i++) {
-    ab.push(b[i]);
+    // ab.push(b[i]);
+    ab[ab.length] = b[i];
 }
 
 console.log(ab);
