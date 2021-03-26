@@ -18,7 +18,7 @@ for (var i = 0; i < a.length; i++) {
 console.log(ab);
 
 
-/* variation on task if arrays are not same length */
+/******* variation on task if arrays are not same length ********/
 
 var c = [2, 5, 3, 6, -5];
 var d = [1, 7, -4];
