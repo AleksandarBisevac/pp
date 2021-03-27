@@ -5,8 +5,22 @@ example, if values are 5, 3, and 7, the program should draw:
 * * * * * * *
 
 */
+function starOutput() {
+  var out = "";
+  for (i = 0; i < arguments.length; i++) {
+    for (j = 0; j < arguments[i]; j++) {
+      out += "*";
+    }
+    out += "\n";
+  }
+  return out;
+}
+
+console.log(starOutput(3, 33, 99));
 
 /* we use function from task1 to nest it into function for star drawing rows */
+
+/* PRVOBITNO REŠENJE ZA TRI BROJA
 var maxNumber = 0;
 function maxNum(num1, num2, num3) {
   if (num1 >= num2 && num1 >= num3) {
@@ -24,18 +38,20 @@ function starOutput(num1, num2, num3) {
   var count1 = "";
   var count2 = "";
   var count3 = "";
+  var out = "";
   for (i = 1; i <= maxNumber; i++) {
     if (i <= num1) {
       count1 += "*";
     }
     if (i <= num2) {
       count2 += "*";
+    } else {
+      count3 += "*";
     }
-    count3 += "*";
+    out = count1 + "\n" + count2 + "\n" + count3;
   }
-  console.log(count1);
-  console.log(count2);
-  console.log(count3);
+  return out;
 }
 
-starOutput(3, 33, 99);
+console.log(starOutput(3, 33, 99));
+*/

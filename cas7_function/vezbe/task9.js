@@ -1,16 +1,15 @@
 /* 9. Write a program that calculates the sum of odd elements of a given array. */
 function isOddNum(num) {
   if (num % 2 !== 0) {
-    return "Number is odd";
-  } else {
-    return "Number is even";
+    return true;
   }
+  return false;
 }
 
 function calcOddsInArray(array) {
-  sumOdds = 0;
+  var sumOdds = 0;
   for (var i = 0; i < array.length; i++) {
-    if (isOddNum(array[i]) === "Number is odd") {
+    if (isOddNum(array[i])) {
       sumOdds += array[i];
     }
   }
