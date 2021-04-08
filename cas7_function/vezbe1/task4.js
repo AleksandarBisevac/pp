@@ -1,6 +1,6 @@
 /* 4. Write a program that calculates an arithmetic mean of four numbers. */
 
-function arithmeticMean(num1, num2, num3, num4) {
+function arithmeticMean() {
   var result = 0;
   for (i = 0; i < arguments.length; i++) {
     result += arguments[i];
