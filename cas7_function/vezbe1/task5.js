@@ -12,18 +12,15 @@ function squareMe(num) {
   for (var i = 1; i <= num; i++) {
     /* creating elements in row */
     for (var j = 1; j <= num; j++) {
-      var count = ""; //takes current value and adds it to the row
-      if (i === 1 || i === num || j === num) {
-        count = "*";
-      } else if (i !== 1 && (j === 1 || j === num)) {
+      if (i === 1 || i === num || j === num || j === 1) {
         count = "*";
       } else {
         count = " ";
       }
       row += count;
     }
-    console.log(row);
-    row = ""; /*reset the row before going to a j-for loop again*/
+    row += "\n"; /*reset the row before going to a j-for loop again*/
   }
+  return row;
 }
-squareMe(33);
+console.log(squareMe(10));
