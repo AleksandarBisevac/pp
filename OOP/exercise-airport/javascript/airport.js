@@ -1,4 +1,5 @@
 (function () {
+  "use strict";
   /* CONSTRUCTOR F-s */
   function Person(name, surname) {
     this.passangerName = name + "";
@@ -78,7 +79,6 @@
         return [rel1Cons, rel2Cons];
       }
 
-      /* ******************************************************************** */
       var passangers = "";
       this.passangerList.forEach(function (element) {
         passangers += element.getData() + "\n";
@@ -94,6 +94,7 @@
       );
     };
   }
+
   //
   function Airport() {
     this.airportName = "Nikola Tesla";
@@ -110,7 +111,7 @@
     };
   }
 
-  /* CONSTRUCTORS END! */
+  /* CONSTRUCTORS FUNCTIONS END! */
 
   /* functions that create objects */
   function createPassanger(name, surname, seat, category) {
@@ -124,24 +125,24 @@
     return flight;
   }
   /* */
-  // var person1 = new Person("Aleksandar", "Biševac");
-  // var seat1 = new Seat(45, "c");
-  var airport = new Airport();
-  var passanger1 = createPassanger("Aleksandar", "Biševac", 27, "B");
-  var passanger2 = createPassanger("Boris", "Perković", 13, "B");
-  var passanger3 = createPassanger("Ksenija", "Milošević", 69, "v");
-  var passanger4 = createPassanger("Mileva", "Marić", 96, "e");
-  var flight1 = createFlight("Belgrade", "New York", "2021-03-13");
-  var flight2 = createFlight("Barcelona", "Belgrade", "2021-04-15");
-  flight1.addPassanger(passanger1);
-  flight1.addPassanger(passanger4);
-  flight2.addPassanger(passanger3);
-  flight2.addPassanger(passanger2);
-  // console.log(flight1.getData());
-  // console.log(flight2.getData());
+  try {
+    var airport = new Airport();
+    var passanger1 = createPassanger("Aleksandar", "Biševac", 27, "B");
+    var passanger2 = createPassanger("Boris", "Perković", 13, "B");
+    var passanger3 = createPassanger("Ksenija", "Milošević", 69, "v");
+    var passanger4 = createPassanger("Mileva", "Marić", 96, "e");
+    var flight1 = createFlight("Belgrade", "New York", "2021-03-13");
+    var flight2 = createFlight("Barcelona", "Belgrade", "2021-04-15");
+    flight1.addPassanger(passanger1);
+    flight1.addPassanger(passanger4);
+    flight2.addPassanger(passanger3);
+    flight2.addPassanger(passanger2);
 
-  airport.addFlight(flight1);
-  airport.addFlight(flight2);
+    airport.addFlight(flight1);
+    airport.addFlight(flight2);
+  } catch (error) {
+    console.log("Error message : " + error.message);
+  }
 
   console.log(
     "Airport: " +
