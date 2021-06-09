@@ -13,11 +13,7 @@
   //
   function Seat(seatNumber, category) {
     this.seatNumber = seatNumber;
-    this.seatCategory = (function () {
-      if (category.toUpperCase() !== "B") {
-        return "E";
-      } else return category;
-    })();
+    this.seatCategory = category;
     this.getData = function () {
       return this.seatNumber + ", " + this.seatCategory;
     };
@@ -88,9 +84,15 @@
         return seatN;
       }
     }
+    function checkSeatCategory(category) {
+      if (category.toUpperCase() !== "B") {
+        return "E";
+      } else return category.toUpperCase();
+    }
     var seatNumber = checkSeat(seat);
+    var seatCategory = checkSeatCategory(category);
     var person = new Person(name, surname);
-    var personSeat = new Seat(seatNumber, category);
+    var personSeat = new Seat(seatNumber, seatCategory);
     var passanger = new Passanger(person, personSeat);
     return passanger;
   }
@@ -129,7 +131,7 @@
   try {
     var airport = new Airport();
     var passanger1 = createPassanger("Aleksandar", "Biševac", 27, "B");
-    var passanger2 = createPassanger("Boris", "Perković", 13, "B");
+    var passanger2 = createPassanger("Boris", "Perković", 13, "b");
     var passanger3 = createPassanger("Ksenija", "Milošević", 69, "v");
     var passanger4 = createPassanger("Mileva", "Marić", 96, "e");
     var flight1 = createFlight("Belgrade", "New York", "2021-03-13");
