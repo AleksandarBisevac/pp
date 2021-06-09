@@ -1,6 +1,8 @@
 (function () {
   "use strict";
-  /* CONSTRUCTOR F-s */
+  /******************************************************* 
+  CONSTRUCTORS FUNCTIONS ! 
+  ********************************************************/
   function Person(name, surname) {
     this.passangerName = name + "";
     this.passangerSurname = surname + "";
@@ -9,21 +11,8 @@
     };
   }
   //
-  function Seat(num, category) {
-    this.seatNumber = (function () {
-      var seatN;
-      if (isFinite(num)) {
-        if (num > 100 || num < 10) {
-          seatN = Math.floor(Math.random() * (100 - 10) + 10);
-          return seatN;
-        } else {
-          return parseInt(num);
-        }
-      } else {
-        seatN = Math.floor(Math.random() * (100 - 10) + 10);
-        return seatN;
-      }
-    })();
+  function Seat(seatNumber, category) {
+    this.seatNumber = seatNumber;
     this.seatCategory = (function () {
       if (category.toUpperCase() !== "B") {
         return "E";
@@ -45,53 +34,17 @@
   function Flight(relation1, relation2, date) {
     this.flightRelationStart = relation1;
     this.flightRelationEnd = relation2;
-    this.flightDate = new Date(date).toLocaleDateString("en-GB");
-    this.dateSplit = this.flightDate.split("/");
-    this.dateSplit =
-      this.dateSplit[1] + "." + this.dateSplit[0] + "." + this.dateSplit[2];
+    this.flightDate = new Date(date);
     this.passangerList = [];
     this.addPassanger = function (passanger) {
       this.passangerList.push(passanger);
     };
     this.getData = function () {
-      var vocals = ["A", "E", "I", "O", "U"];
-      function getConsonants() {
-        var relation1ConsonArr = relation1.toUpperCase().split("");
-        var relation2ConsonArr = relation2.toUpperCase().split("");
-        var rel1Cons = "";
-        var rel2Cons = "";
-        var filterrelation1ConsonArr = relation1ConsonArr.filter(function (
-          element
-        ) {
-          return vocals.indexOf(element) === -1;
-        });
-        var filterrelation2ConsonArr = relation2ConsonArr.filter(function (
-          element
-        ) {
-          return vocals.indexOf(element) === -1;
-        });
-        rel1Cons =
-          filterrelation1ConsonArr[0] +
-          filterrelation1ConsonArr[filterrelation1ConsonArr.length - 1];
-        rel2Cons =
-          filterrelation2ConsonArr[0] +
-          filterrelation2ConsonArr[filterrelation2ConsonArr.length - 1];
-        return [rel1Cons, rel2Cons];
-      }
-
       var passangers = "";
       this.passangerList.forEach(function (element) {
         passangers += element.getData() + "\n";
       });
-      return (
-        this.dateSplit +
-        ", " +
-        getConsonants()[0] +
-        " - " +
-        getConsonants()[1] +
-        "\n" +
-        passangers
-      );
+      return date + ", " + relation1 + " - " + relation2 + "\n" + passangers;
     };
   }
 
@@ -111,20 +64,68 @@
     };
   }
 
-  /* CONSTRUCTORS FUNCTIONS END! */
+  /******************************************************* 
+  CONSTRUCTORS FUNCTIONS END! 
+  ********************************************************/
 
-  /* functions that create objects */
+  /******************************************************* 
+  functions that create objects
+  ********************************************************/
+
+  // CREATE PASSANGER FUNCTION
   function createPassanger(name, surname, seat, category) {
+    function checkSeat(num) {
+      var seatN;
+      if (isFinite(num)) {
+        if (num > 100 || num < 10) {
+          seatN = Math.floor(Math.random() * (100 - 10) + 10);
+          return seatN;
+        } else {
+          return parseInt(num);
+        }
+      } else {
+        seatN = Math.floor(Math.random() * (100 - 10) + 10);
+        return seatN;
+      }
+    }
+    var seatNumber = checkSeat(seat);
     var person = new Person(name, surname);
-    var personSeat = new Seat(seat, category);
+    var personSeat = new Seat(seatNumber, category);
     var passanger = new Passanger(person, personSeat);
     return passanger;
   }
+  // CREATE FLIGHT FUNCTION
   function createFlight(relation1, relation2, date) {
-    var flight = new Flight(relation1, relation2, date);
+    function getConsonants(relation) {
+      var vocals = ["A", "E", "I", "O", "U"];
+      var relationConsonArr = relation.toUpperCase().split("");
+      var relShort = "";
+      var filterrelationConsonArr = relationConsonArr.filter(function (
+        element
+      ) {
+        return vocals.indexOf(element) === -1;
+      });
+      relShort =
+        filterrelationConsonArr[0] +
+        filterrelationConsonArr[filterrelationConsonArr.length - 1];
+      return relShort;
+    }
+    function displayDate() {
+      var dateSplit;
+      var flightDate = new Date(date).toLocaleDateString("en-GB");
+      dateSplit = flightDate.split("/");
+      dateSplit = dateSplit[1] + "." + dateSplit[0] + "." + dateSplit[2];
+      return dateSplit;
+    }
+    var rel1 = getConsonants(relation1);
+    var rel2 = getConsonants(relation2);
+    var flightDate = displayDate(date);
+    var flight = new Flight(rel1, rel2, flightDate);
     return flight;
   }
-  /* */
+  /******************************************************* 
+  functions that create objects END!
+  ********************************************************/
   try {
     var airport = new Airport();
     var passanger1 = createPassanger("Aleksandar", "Biševac", 27, "B");

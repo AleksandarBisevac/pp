@@ -35,7 +35,7 @@ the amount that is missing to complete the purchase.
 (function () {
   /* constructor function for products */
   function Product(name, productPrice, expDate) {
-    this.productId = Math.floor(Math.random() * 90000);
+    this.productId = Math.floor(Math.random() * 90000 + 10000);
     this.name = name;
     this.price = parseFloat(productPrice.toFixed(2));
     this.experationDate = expDate;
