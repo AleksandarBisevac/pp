@@ -58,8 +58,21 @@
       });
       return totalPassangers;
     };
+    this.getData = function () {
+      var flights = "";
+      airport.flights.forEach(function (element, index) {
+        flights += airport.flights[index].getData() + "\n";
+      });
+      return (
+        "Airport: " +
+        airport.airportName +
+        " Total passangers: " +
+        airport.getTotalPassangers() +
+        "\n" +
+        flights
+      );
+    };
   }
-
   /******************************************************* 
   CONSTRUCTORS FUNCTIONS END! 
   ********************************************************/
@@ -125,6 +138,7 @@
     var flight = new Flight(rel1, rel2, flightDate);
     return flight;
   }
+
   /******************************************************* 
   functions that create objects END!
   ********************************************************/
@@ -147,13 +161,5 @@
     console.log("Error message : " + error.message);
   }
 
-  console.log(
-    "Airport: " +
-      airport.airportName +
-      " Total passangers: " +
-      airport.getTotalPassangers()
-  );
-  airport.flights.forEach(function (element, index) {
-    console.log(airport.flights[index].getData());
-  });
+  console.log(airport.getData());
 })();
