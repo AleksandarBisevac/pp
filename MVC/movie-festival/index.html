@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program | Movie Festival</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/class.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <h1>Movie Festival</h1>
+    <!-- MAIN SECTION -->
+    <main class="container">
+      <h3>Please fill the form</h3>
+      <!-- MOVIE FORM SECTION -->
+      <h4>Movie</h4>
+      <article class="genre">
+        <form>
+          <label for="title">
+            Title:<br />
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Title"
+            /><br />
+          </label>
+          <label for="lenght">
+            Lenght (min):<br />
+            <input
+              type="number"
+              name="lenght"
+              id="lenght"
+              placeholder="Lenght"
+            /><br />
+          </label>
+          <select name="genre-select" id="genre">
+            <option value="">-</option>
+            <option value="drama">Drama</option>
+            <option value="comedy">Comedy</option>
+            <option value="action">Action</option>
+            <option value="thriller">Thriller</option>
+            <option value="horror">Horror</option>
+          </select>
+          <br />
+        </form>
+        <button id="genre-select-btn">Create Movie</button>
+        <p id="genre-err"></p>
+        <div id="movie-info"></div>
+        <!-- <ul class="genre-list"></ul> -->
+      </article>
+      <!-- PROGRAM FORM SECTION -->
+      <h4>Program</h4>
+      <article class="genre">
+        <form>
+          <label for="date">
+            Date:<br />
+            <input
+              type="date"
+              name="date"
+              id="date"
+              placeholder="dd/mm/yyyy"
+            /><br />
+          </label>
+        </form>
+        <button id="program-select-btn">Create Program</button>
+        <p id="program-err"></p>
+        <div id="program-info"></div>
+        <hr />
+        <!-- ADD MOVIE SECTION -->
+        <h4>Movie</h4>
+        <form>
+          <label for="movie">
+            Movie:<br />
+            <select name="movie-select" id="movie-select">
+              <option value="">-</option></select
+            ><br />
+          </label>
+          <label for="program">
+            Program:<br />
+            <select name="program-select" id="program-select">
+              <option value="">-</option></select
+            ><br />
+          </label>
+        </form>
+        <button id="add-movie-btn">Add Movie To Program</button>
+        <p id="movie-err"></p>
+        <div id="movie-list"></div>
+      </article>
+    </main>
+  </body>
+</html>
