@@ -97,15 +97,22 @@ function createProgram(date) {
 
 btnProgram.addEventListener("click", function () {
   programErr.textContent = "";
-  var program = createProgram(date.value);
-  festival.addProgram(program);
-  index = festival.programList.length - 1;
-  programSelect.innerHTML += `<option value=${index}>${festival.programList[index].date}</option>`;
-  programInfo.innerHTML = "";
-  festival.programList.forEach((element) => {
-    programInfo.innerHTML += `<p>${element.getData()}</p>`;
-  });
-  date.value = "";
+  if (date.value !== "") {
+    var program = createProgram(date.value);
+    festival.addProgram(program);
+    index = festival.programList.length - 1;
+    programSelect.innerHTML += `<option value=${index}>${festival.programList[
+      index
+    ].getData()}</option>`;
+    programInfo.innerHTML = "";
+    festival.programList.forEach((element) => {
+      programInfo.innerHTML += `<p>${element.getData()}</p>`;
+    });
+    date.value = "";
+  } else {
+    programErr.innerHTML +=
+      "Please select valid date! Date must be in present, or future!<br />";
+  }
 });
 
 movieBtn.addEventListener("click", function () {
@@ -117,6 +124,10 @@ movieBtn.addEventListener("click", function () {
   if (movie && program) {
     program.addMovie(movie);
     programInfo.innerHTML = "";
+    programSelect.innerHTML = `<option value="">-</option>`;
+    festival.programList.forEach((element, index) => {
+      programSelect.innerHTML += `<option value=${index}>${element.getData()}</option>`;
+    });
     festival.programList.forEach((element) => {
       programInfo.innerHTML += `<p>${element.getData()}</p>`;
     });
