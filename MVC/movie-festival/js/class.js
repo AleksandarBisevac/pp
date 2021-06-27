@@ -13,6 +13,7 @@ class Movie {
 class Program {
   constructor(date) {
     this.date = new Date(date);
+    this.key = this.date.getTime();
     this.movieList = [];
   }
   addMovie(movie) {
@@ -66,5 +67,10 @@ class Festival {
   }
   addProgram(program) {
     this.programList.push(program);
+  }
+  sortProgram() {
+    var sorted = [];
+    sorted = this.programList.sort((a, b) => a.date - b.date);
+    return sorted;
   }
 }
